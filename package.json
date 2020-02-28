@@ -4,11 +4,9 @@
   "description": "blog cms",
   "main": "index.js",
   "scripts": {
-    "admin-start": "cross-env NODE_ENV=development node tools/server.js",
-    "admin-dll": "rimraf ./dll && node tools/dll.js",
-    "admin-build": "rimraf ../kite/static/_admin && cross-env NODE_ENV=production  node tools/build.js",
-    "admin-lint": "eslint --ext .js --ext .jsx admin/",
-    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue /"
+    "start": "cross-env NODE_ENV=development node tools/server.js",
+    "dll": "rimraf ./dll && node tools/dll.js",
+    "build": "rimraf ../kite/static/_admin && cross-env NODE_ENV=production  node tools/build.js"
   },
   "author": "xiaoquan",
   "license": "ISC",
