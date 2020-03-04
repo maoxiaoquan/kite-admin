@@ -25,7 +25,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -335,7 +335,7 @@ class DynamicTopic extends React.Component {
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -345,7 +345,7 @@ class DynamicTopic extends React.Component {
         sm: { span: 16 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -399,7 +399,7 @@ class DynamicTopic extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="专题名">
+                <Form.Item {...itemLayout} label="专题名">
                   {getFieldDecorator('name', {
                     rules: [
                       {
@@ -409,9 +409,9 @@ class DynamicTopic extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专题名" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="专题名单词">
+                <Form.Item {...itemLayout} label="专题名单词">
                   {getFieldDecorator('en_name', {
                     rules: [
                       {
@@ -421,9 +421,9 @@ class DynamicTopic extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专题单词" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="专题图标地址">
+                <Form.Item {...itemLayout} label="专题图标地址">
                   {getFieldDecorator('icon', {
                     rules: [
                       {
@@ -433,45 +433,45 @@ class DynamicTopic extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专题图标地址" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="专题描述">
+                <Form.Item {...itemLayout} hasFeedback label="专题描述">
                   {getFieldDecorator('description', {
                     rules: [{ required: true, message: '请输入专题描述' }]
                   })(<TextArea placeholder="请输入专题描述" type="text" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="首页显示">
+                <Form.Item {...itemLayout} label="首页显示">
                   {getFieldDecorator('is_show', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否加入首页或者推荐">
+                <Form.Item {...itemLayout} label="是否加入首页或者推荐">
                   {getFieldDecorator('is_push', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="排序">
+                <Form.Item {...itemLayout} label="排序">
                   {getFieldDecorator('sort')(<InputNumber />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建专题' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

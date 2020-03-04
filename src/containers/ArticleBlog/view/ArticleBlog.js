@@ -18,7 +18,7 @@ import { getArticleBlogList, updateArticleBlog } from '../actions'
 import alert from '../../../utils/alert'
 import { otherStatusList, otherStatusListText } from '../../../utils/constant'
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -236,7 +236,7 @@ class ArticleBlog extends React.Component {
     const { stateArticleBlog } = this.props
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -246,7 +246,7 @@ class ArticleBlog extends React.Component {
         sm: { span: 16 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -287,7 +287,7 @@ class ArticleBlog extends React.Component {
           visible={this.state.modal_visible_edit}
         >
           <Form className="from-view" onSubmit={this.handleSubmit}>
-            <FormItem {...formItemLayout} label="个人专栏名">
+            <Form.Item {...itemLayout} label="个人专栏名">
               {getFieldDecorator('name', {
                 rules: [
                   {
@@ -297,9 +297,9 @@ class ArticleBlog extends React.Component {
                   }
                 ]
               })(<Input disabled placeholder="个人专栏名" />)}
-            </FormItem>
+            </Form.Item>
 
-            <FormItem {...formItemLayout} hasFeedback label="状态">
+            <Form.Item {...itemLayout} hasFeedback label="状态">
               {getFieldDecorator('status', {
                 rules: [{ required: true, message: '请选择状态！' }]
               })(
@@ -318,11 +318,11 @@ class ArticleBlog extends React.Component {
                   ))}
                 </Select>
               )}
-            </FormItem>
+            </Form.Item>
 
             {Number(edit_status_val) ===
             this.state.otherStatusList.reviewFail ? (
-              <FormItem {...formItemLayout} label="拒绝的原因">
+              <Form.Item {...itemLayout} label="拒绝的原因">
                 {getFieldDecorator('rejection_reason', {
                   rules: [
                     {
@@ -332,16 +332,16 @@ class ArticleBlog extends React.Component {
                     }
                   ]
                 })(<Input placeholder="文章专栏被拒绝的原因" />)}
-              </FormItem>
+              </Form.Item>
             ) : (
               ''
             )}
 
-            <FormItem {...tailFormItemLayout}>
-              <Button className="register-btn" htmlType="submit" type="primary">
+            <Form.Item {...tailItemLayout}>
+              <Button className="register-btn" htmltype="submit" type="primary">
                 {is_create ? '创建专栏' : '更新'}
               </Button>
-            </FormItem>
+            </Form.Item>
           </Form>
         </Modal>
 
@@ -349,15 +349,15 @@ class ArticleBlog extends React.Component {
           <div className="card-body">
             <div className="xsb-operation-menu">
               <Form layout="inline">
-                <FormItem label="个人专题标题">
+                <Form.Item label="个人专题标题">
                   <Input
                     value={name_val}
                     onChange={e => {
                       this.changeVal(e.target.value, 'name_val')
                     }}
                   />
-                </FormItem>
-                <FormItem label="状态">
+                </Form.Item>
+                <Form.Item label="状态">
                   <Select
                     className="select-view"
                     value={status_val}
@@ -372,7 +372,7 @@ class ArticleBlog extends React.Component {
                       </Option>
                     ))}
                   </Select>
-                </FormItem>
+                </Form.Item>
 
                 <Form.Item>
                   <button

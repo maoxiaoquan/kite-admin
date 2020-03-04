@@ -28,7 +28,7 @@ import { setUserRoleAuthority } from '../actions/UserRoleAction'
 
 const TreeNode = Tree.TreeNode
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -432,7 +432,7 @@ class UserRole extends React.Component {
     const { stateUserRole, stateUserAuthority } = this.props
     const { loading, is_create, user_role_type_list } = this.state
     const { getFieldDecorator } = this.props.form
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -442,7 +442,7 @@ class UserRole extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -496,7 +496,7 @@ class UserRole extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="角色名">
+                <Form.Item {...itemLayout} label="角色名">
                   {getFieldDecorator('user_role_name', {
                     rules: [
                       {
@@ -506,9 +506,9 @@ class UserRole extends React.Component {
                       }
                     ]
                   })(<Input placeholder="角色名" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="角色类型">
+                <Form.Item {...itemLayout} hasFeedback label="角色类型">
                   {getFieldDecorator('user_role_type', {
                     rules: [
                       {
@@ -525,9 +525,9 @@ class UserRole extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="角色名图标">
+                <Form.Item {...itemLayout} label="角色名图标">
                   {getFieldDecorator('user_role_icon', {
                     rules: [
                       {
@@ -536,9 +536,9 @@ class UserRole extends React.Component {
                       }
                     ]
                   })(<Input placeholder="角色名图标" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="角色描述">
+                <Form.Item {...itemLayout} hasFeedback label="角色描述">
                   {getFieldDecorator('user_role_description', {
                     rules: [
                       {
@@ -547,29 +547,29 @@ class UserRole extends React.Component {
                       }
                     ]
                   })(<TextArea placeholder="请输入角色描述" type="text" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否显示">
+                <Form.Item {...itemLayout} label="是否显示">
                   {getFieldDecorator('is_show', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建角色' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

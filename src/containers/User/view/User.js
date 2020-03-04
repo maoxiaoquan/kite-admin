@@ -25,7 +25,7 @@ import alert from '../../../utils/alert'
 import { getUserRoleAll } from '../../UserRole/actions/UserRoleAction'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 import { compareAsc, format } from 'date-fns'
 import { DatePicker } from 'antd'
@@ -345,7 +345,7 @@ class User extends React.Component {
       </Select>
     )
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -355,7 +355,7 @@ class User extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -402,7 +402,7 @@ class User extends React.Component {
                 className="from-view"
                 onSubmit={this.handleSubmit.bind(this)}
               >
-                <FormItem {...formItemLayout} label="昵称">
+                <Form.Item {...itemLayout} label="昵称">
                   {getFieldDecorator('nickname', {
                     rules: [
                       {
@@ -412,9 +412,9 @@ class User extends React.Component {
                       }
                     ]
                   })(<Input disabled={true} placeholder="昵称" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="用户角色标签">
+                <Form.Item {...itemLayout} label="用户角色标签">
                   {getFieldDecorator('user_role_ids', {
                     rules: [
                       {
@@ -432,23 +432,23 @@ class User extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否可登录">
+                <Form.Item {...itemLayout} label="是否可登录">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     确定
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

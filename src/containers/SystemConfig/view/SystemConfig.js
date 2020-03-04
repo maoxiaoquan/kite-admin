@@ -5,6 +5,7 @@ import { Icon, Breadcrumb, Alert } from 'antd'
 import EmailBind from '../components/EmailBind'
 import WebsiteInfo from '../components/WebsiteInfo'
 import WebConfig from '../components/WebConfig'
+import Oauth from '../components/Oauth'
 
 import './SystemConfig.scss'
 
@@ -35,6 +36,7 @@ class SystemConfig extends React.Component {
         <EmailBind></EmailBind>
         <WebsiteInfo></WebsiteInfo>
         <WebConfig></WebConfig>
+        <Oauth></Oauth>
         <Alert
           message="备注"
           description="由于是系统配置，修改时请谨慎，修改成功某些配置后，如果未生效或者出现错误，请务必重启服务"

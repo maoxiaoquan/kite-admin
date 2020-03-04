@@ -24,7 +24,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -343,7 +343,7 @@ class Picture extends React.Component {
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -353,7 +353,7 @@ class Picture extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -407,7 +407,7 @@ class Picture extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="图片标题">
+                <Form.Item {...itemLayout} label="图片标题">
                   {getFieldDecorator('picture_title', {
                     rules: [
                       {
@@ -417,9 +417,9 @@ class Picture extends React.Component {
                       }
                     ]
                   })(<Input placeholder="图片标题" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="图片说明">
+                <Form.Item {...itemLayout} label="图片说明">
                   {getFieldDecorator('description', {
                     rules: [
                       {
@@ -429,9 +429,9 @@ class Picture extends React.Component {
                       }
                     ]
                   })(<Input placeholder="图片说明" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="Upload">
+                <Form.Item {...itemLayout} label="Upload">
                   {getFieldDecorator('picture_url', {
                     getValueFromEvent: this.normFile
                   })(
@@ -445,23 +445,23 @@ class Picture extends React.Component {
                       </div>
                     </Upload>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建标签' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

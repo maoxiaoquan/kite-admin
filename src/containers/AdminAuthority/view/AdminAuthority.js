@@ -24,7 +24,7 @@ import {
 } from '../action/AdminAuthorityAction'
 
 const TreeNode = Tree.TreeNode
-const FormItem = Form.Item
+
 const Option = Select.Option
 const confirm = Modal.confirm
 
@@ -268,7 +268,7 @@ class AdminAuthority extends React.Component {
         : null
     }
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -278,7 +278,7 @@ class AdminAuthority extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -329,18 +329,18 @@ class AdminAuthority extends React.Component {
             >
               <Form className="login-form" onSubmit={this.handleSubmit}>
                 {authority_parent_name ? (
-                  <FormItem {...formItemLayout} label="父权限名称">
+                  <Form.Item {...itemLayout} label="父权限名称">
                     <Input
                       disabled={true}
                       type="text"
                       value={this.state.authority_parent_name}
                     />
-                  </FormItem>
+                  </Form.Item>
                 ) : (
                   ''
                 )}
 
-                <FormItem {...formItemLayout} hasFeedback label="权限名称">
+                <Form.Item {...itemLayout} hasFeedback label="权限名称">
                   {getFieldDecorator('authority_name', {
                     rules: [
                       {
@@ -349,9 +349,9 @@ class AdminAuthority extends React.Component {
                       }
                     ]
                   })(<Input type="text" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="权限类型">
+                <Form.Item {...itemLayout} hasFeedback label="权限类型">
                   {getFieldDecorator('authority_type', {
                     rules: [
                       {
@@ -368,10 +368,10 @@ class AdminAuthority extends React.Component {
                       <Option value="2">操作和功能</Option>
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
                 {Number(authority_type_select) === 2 ? (
-                  <FormItem {...formItemLayout} hasFeedback label="权限路径">
+                  <Form.Item {...itemLayout} hasFeedback label="权限路径">
                     {getFieldDecorator('authority_url', {
                       rules: [
                         {
@@ -386,9 +386,9 @@ class AdminAuthority extends React.Component {
                         type="text"
                       />
                     )}
-                  </FormItem>
+                  </Form.Item>
                 ) : (
-                  <FormItem {...formItemLayout} hasFeedback label="权限Key">
+                  <Form.Item {...itemLayout} hasFeedback label="权限Key">
                     {getFieldDecorator('authority_url', {
                       rules: [
                         {
@@ -397,14 +397,14 @@ class AdminAuthority extends React.Component {
                         }
                       ]
                     })(<Input placeholder="请输入权限Key" type="text" />)}
-                  </FormItem>
+                  </Form.Item>
                 )}
 
-                <FormItem {...formItemLayout} label="排序">
+                <Form.Item {...itemLayout} label="排序">
                   {getFieldDecorator('authority_sort')(<InputNumber />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="权限描述">
+                <Form.Item {...itemLayout} hasFeedback label="权限描述">
                   {getFieldDecorator('authority_description', {
                     rules: [
                       {
@@ -413,21 +413,21 @@ class AdminAuthority extends React.Component {
                       }
                     ]
                   })(<Input placeholder="请输入权限描述" type="text" />)}
-                </FormItem>
+                </Form.Item>
 
                 {Number(authority_type_select) !== 2 ? (
-                  <FormItem {...formItemLayout} label="是否显示">
+                  <Form.Item {...itemLayout} label="是否显示">
                     {getFieldDecorator('enable', { valuePropName: 'checked' })(
                       <Switch />
                     )}
-                  </FormItem>
+                  </Form.Item>
                 ) : (
                   ''
                 )}
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="login-form-button"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {this.state.is_create ? '提交' : '修改'}
@@ -435,7 +435,7 @@ class AdminAuthority extends React.Component {
                   <Button onClick={this.handleReset} style={{ marginLeft: 8 }}>
                     重置
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

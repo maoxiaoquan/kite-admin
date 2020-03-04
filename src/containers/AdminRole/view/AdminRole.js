@@ -24,7 +24,7 @@ import {
 } from '../actions/AdminRoleAction'
 
 const TreeNode = Tree.TreeNode
-const FormItem = Form.Item
+
 const Option = Select.Option
 const confirm = Modal.confirm
 const { TextArea } = Input
@@ -340,7 +340,7 @@ class AdminRole extends React.Component {
     const { stateAdminRole, stateAdminAuthority } = this.props
     const { loading, role_name, role_description, is_create } = this.state
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 4 }
@@ -350,7 +350,7 @@ class AdminRole extends React.Component {
         sm: { span: 20 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -398,7 +398,7 @@ class AdminRole extends React.Component {
               title="创建角色"
               visible={this.state.visible_create_role_modal}
             >
-              <FormItem {...formItemLayout} label="角色名">
+              <Form.Item {...itemLayout} label="角色名">
                 <Input
                   className="input-view"
                   onChange={e => {
@@ -407,9 +407,9 @@ class AdminRole extends React.Component {
                   placeholder="请填写角色名"
                   value={role_name}
                 />
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="角色描述">
+              <Form.Item {...itemLayout} label="角色描述">
                 <TextArea
                   autosize={{ minRows: 2, maxRows: 6 }}
                   onChange={e => {
@@ -418,18 +418,18 @@ class AdminRole extends React.Component {
                   placeholder="请填写角色描述"
                   value={role_description}
                 />
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...tailFormItemLayout}>
+              <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmlType="submit"
+                  htmltype="submit"
                   onClick={this.handleOk}
                   type="primary"
                 >
                   {is_create ? '创建' : '更新'}
                 </Button>
-              </FormItem>
+              </Form.Item>
             </Modal>
 
             <Modal

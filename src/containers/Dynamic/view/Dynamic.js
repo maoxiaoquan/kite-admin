@@ -34,7 +34,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 
 @withRouter
@@ -374,7 +374,7 @@ class Dynamic extends React.Component {
     const { stateDynamic = {} } = this.props
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -384,7 +384,7 @@ class Dynamic extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -416,15 +416,15 @@ class Dynamic extends React.Component {
           <div className="card-body">
             <div className="xsb-operation-menu">
               <Form layout="inline">
-                <FormItem label="动态内容">
+                <Form.Item label="动态内容">
                   <Input
                     value={content_val}
                     onChange={e => {
                       this.changeVal(e.target.value, 'content_val')
                     }}
                   />
-                </FormItem>
-                <FormItem label="状态">
+                </Form.Item>
+                <Form.Item label="状态">
                   <Select
                     className="select-view"
                     value={status_val}
@@ -439,8 +439,8 @@ class Dynamic extends React.Component {
                       </Option>
                     ))}
                   </Select>
-                </FormItem>
-                <FormItem label="类型">
+                </Form.Item>
+                <Form.Item label="类型">
                   <Select
                     className="select-view"
                     value={type_val}
@@ -455,7 +455,7 @@ class Dynamic extends React.Component {
                       </Option>
                     ))}
                   </Select>
-                </FormItem>
+                </Form.Item>
                 <Form.Item>
                   <button
                     className="btn btn-danger"
@@ -484,7 +484,7 @@ class Dynamic extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} hasFeedback label="状态">
+                <Form.Item {...itemLayout} hasFeedback label="状态">
                   {getFieldDecorator('status', {
                     rules: [{ required: true, message: '请选择状态！' }]
                   })(
@@ -503,11 +503,11 @@ class Dynamic extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
                 {Number(edit_status_val) ===
                 this.state.otherStatusList.reviewFail ? (
-                  <FormItem {...formItemLayout} label="拒绝的原因">
+                  <Form.Item {...itemLayout} label="拒绝的原因">
                     {getFieldDecorator('rejection_reason', {
                       rules: [
                         {
@@ -517,12 +517,12 @@ class Dynamic extends React.Component {
                         }
                       ]
                     })(<Input placeholder="动态被拒绝的原因" />)}
-                  </FormItem>
+                  </Form.Item>
                 ) : (
                   ''
                 )}
 
-                <FormItem {...formItemLayout} hasFeedback label="类型">
+                <Form.Item {...itemLayout} hasFeedback label="类型">
                   {getFieldDecorator('type', {
                     rules: [{ required: true, message: '请选择类型！' }]
                   })(
@@ -534,9 +534,9 @@ class Dynamic extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="所属专题">
+                <Form.Item {...itemLayout} label="所属专题">
                   {getFieldDecorator('topic_ids', {
                     rules: [
                       {
@@ -552,17 +552,17 @@ class Dynamic extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     更新
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

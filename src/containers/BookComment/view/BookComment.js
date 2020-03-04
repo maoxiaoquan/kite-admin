@@ -20,7 +20,7 @@ import { otherStatusList, otherStatusListText } from '../../../utils/constant'
 import alert from '../../../utils/alert'
 import faceqq from './qq'
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -287,7 +287,7 @@ class BookComment extends React.Component {
     const { loading, content_val, status_val } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -297,7 +297,7 @@ class BookComment extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -331,15 +331,15 @@ class BookComment extends React.Component {
           <div className="card-body">
             <div className="xsb-operation-menu">
               <Form layout="inline">
-                <FormItem label="小书章节评论标题">
+                <Form.Item label="小书章节评论标题">
                   <Input
                     value={content_val}
                     onChange={e => {
                       this.changeVal(e.target.value, 'content_val')
                     }}
                   />
-                </FormItem>
-                <FormItem label="状态">
+                </Form.Item>
+                <Form.Item label="状态">
                   <Select
                     className="select-view"
                     value={status_val}
@@ -354,7 +354,7 @@ class BookComment extends React.Component {
                       </Option>
                     ))}
                   </Select>
-                </FormItem>
+                </Form.Item>
                 <Form.Item>
                   <button
                     type="primary"
@@ -396,7 +396,7 @@ class BookComment extends React.Component {
           visible={this.state.modal_visible_edit}
         >
           <Form className="from-view" onSubmit={this.handleSubmit}>
-            <FormItem {...formItemLayout} hasFeedback label="状态">
+            <Form.Item {...itemLayout} hasFeedback label="状态">
               {getFieldDecorator('status', {
                 rules: [{ required: true, message: '请选择状态！' }]
               })(
@@ -408,13 +408,13 @@ class BookComment extends React.Component {
                   ))}
                 </Select>
               )}
-            </FormItem>
+            </Form.Item>
 
-            <FormItem {...tailFormItemLayout}>
-              <Button className="register-btn" htmlType="submit" type="primary">
+            <Form.Item {...tailItemLayout}>
+              <Button className="register-btn" htmltype="submit" type="primary">
                 确定
               </Button>
-            </FormItem>
+            </Form.Item>
           </Form>
         </Modal>
       </div>

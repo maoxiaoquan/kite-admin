@@ -19,7 +19,7 @@ import alert from '../../../utils/alert'
 import { getUserRoleAll } from '../../UserRole/actions/UserRoleAction'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 
 @connect(({ stateSystemConfig }) => {
@@ -92,7 +92,7 @@ class SystemConfig extends React.Component {
     const { is_edit } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -102,7 +102,7 @@ class SystemConfig extends React.Component {
         sm: { span: 16 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -117,7 +117,7 @@ class SystemConfig extends React.Component {
     return (
       <div className="layout-main" id="system-config">
         <div className="layout-main-title">
-          <h4 class="header-title">网站功能</h4>
+          <h4 className="header-title">网站功能</h4>
         </div>
 
         <div className="layout-nav-btn" />
@@ -125,7 +125,7 @@ class SystemConfig extends React.Component {
         <div className="card layout-card-view">
           <div className="card-body sc-content-view">
             <Form className="from-view" onSubmit={this.handleSubmit.bind(this)}>
-              <FormItem {...formItemLayout} label="开启登录">
+              <Form.Item {...itemLayout} label="开启登录">
                 {getFieldDecorator('on_login', {
                   rules: [
                     {
@@ -147,9 +147,9 @@ class SystemConfig extends React.Component {
                     <Option value="no">关闭</Option>
                   </Select>
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="开启注册">
+              <Form.Item {...itemLayout} label="开启注册">
                 {getFieldDecorator('on_register', {
                   rules: [
                     {
@@ -171,9 +171,9 @@ class SystemConfig extends React.Component {
                     <Option value="no">关闭</Option>
                   </Select>
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="开启评论模块">
+              <Form.Item {...itemLayout} label="开启评论模块">
                 {getFieldDecorator('on_comment', {
                   rules: [
                     {
@@ -195,9 +195,9 @@ class SystemConfig extends React.Component {
                     <Option value="no">关闭</Option>
                   </Select>
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="后台管理界面访问地址">
+              <Form.Item {...itemLayout} label="后台管理界面访问地址">
                 {getFieldDecorator('admin_url', {
                   rules: [
                     {
@@ -212,9 +212,9 @@ class SystemConfig extends React.Component {
                     placeholder="后台管理界面访问地址"
                   />
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="google统计code">
+              <Form.Item {...itemLayout} label="google统计code">
                 {getFieldDecorator('googleCode', {
                   rules: [
                     {
@@ -223,9 +223,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="google统计code" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="开启百度自动推送">
+              <Form.Item {...itemLayout} label="开启百度自动推送">
                 {getFieldDecorator('isBaiduAuthPush', {
                   rules: [
                     {
@@ -239,9 +239,9 @@ class SystemConfig extends React.Component {
                     <Option value="no">关闭</Option>
                   </Select>
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...tailFormItemLayout}>
+              <Form.Item {...tailItemLayout}>
                 {!is_edit ? (
                   <button
                     className="btn btn-info"
@@ -277,7 +277,7 @@ class SystemConfig extends React.Component {
                     </button>
                   </div>
                 )}
-              </FormItem>
+              </Form.Item>
             </Form>
           </div>
         </div>

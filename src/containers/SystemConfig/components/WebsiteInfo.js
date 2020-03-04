@@ -19,7 +19,7 @@ import alert from '../../../utils/alert'
 import { getUserRoleAll } from '../../UserRole/actions/UserRoleAction'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 
 @connect(({ stateSystemConfig }) => {
@@ -100,7 +100,7 @@ class SystemConfig extends React.Component {
     const { is_edit } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -110,7 +110,7 @@ class SystemConfig extends React.Component {
         sm: { span: 16 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -125,7 +125,7 @@ class SystemConfig extends React.Component {
     return (
       <div className="layout-main" id="system-config">
         <div className="layout-main-title">
-          <h4 class="header-title">网站配置</h4>
+          <h4 className="header-title">网站配置</h4>
         </div>
 
         <div className="layout-nav-btn" />
@@ -133,7 +133,7 @@ class SystemConfig extends React.Component {
         <div className="card layout-card-view">
           <div className="card-body sc-content-view">
             <Form className="from-view" onSubmit={this.handleSubmit.bind(this)}>
-              <FormItem {...formItemLayout} label="网站名">
+              <Form.Item {...itemLayout} label="网站名">
                 {getFieldDecorator('website_name', {
                   rules: [
                     {
@@ -143,9 +143,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="网站名" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="logo地址">
+              <Form.Item {...itemLayout} label="logo地址">
                 {getFieldDecorator('logo', {
                   rules: [
                     {
@@ -154,9 +154,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="logo" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="域名">
+              <Form.Item {...itemLayout} label="域名">
                 {getFieldDecorator('domain_name', {
                   rules: [
                     {
@@ -165,9 +165,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="域名" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="网站介绍">
+              <Form.Item {...itemLayout} label="网站介绍">
                 {getFieldDecorator('introduction', {
                   rules: [
                     {
@@ -176,9 +176,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="网站介绍" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="网站关键词">
+              <Form.Item {...itemLayout} label="网站关键词">
                 {getFieldDecorator('keywords', {
                   rules: [
                     {
@@ -187,9 +187,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="网站关键词" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="网站描述">
+              <Form.Item {...itemLayout} label="网站描述">
                 {getFieldDecorator('description', {
                   rules: [
                     {
@@ -198,9 +198,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="网站介绍" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="备案号">
+              <Form.Item {...itemLayout} label="备案号">
                 {getFieldDecorator('miibeian', {
                   rules: [
                     {
@@ -209,11 +209,11 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="备案号" />)}
-              </FormItem>
+              </Form.Item>
 
               <h3 className="title">侧栏底部信息</h3>
 
-              <FormItem {...formItemLayout} label="关于">
+              <Form.Item {...itemLayout} label="关于">
                 {getFieldDecorator('about', {
                   rules: [
                     {
@@ -222,9 +222,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="关于" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="建议反馈">
+              <Form.Item {...itemLayout} label="建议反馈">
                 {getFieldDecorator('feedback', {
                   rules: [
                     {
@@ -233,9 +233,9 @@ class SystemConfig extends React.Component {
                     }
                   ]
                 })(<Input disabled={!is_edit} placeholder="建议反馈" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...tailFormItemLayout}>
+              <Form.Item {...tailItemLayout}>
                 {!is_edit ? (
                   <button
                     className="btn btn-info"
@@ -271,7 +271,7 @@ class SystemConfig extends React.Component {
                     </button>
                   </div>
                 )}
-              </FormItem>
+              </Form.Item>
             </Form>
           </div>
         </div>

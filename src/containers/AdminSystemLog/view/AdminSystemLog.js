@@ -21,7 +21,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 

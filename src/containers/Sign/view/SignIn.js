@@ -8,8 +8,6 @@ import { signIn } from '../actions/index'
 
 import './signin.scss'
 
-const FormItem = Form.Item
-
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
@@ -39,7 +37,7 @@ class NormalLoginForm extends React.Component {
           </div>
 
           <Form className="from-view" onSubmit={this.handleSubmit}>
-            <FormItem hasFeedback>
+            <Form.Item hasFeedback>
               {getFieldDecorator('account', {
                 rules: [{ required: true, message: '请输入你的账户！' }]
               })(
@@ -49,8 +47,8 @@ class NormalLoginForm extends React.Component {
                   prefix={<Icon type="user" />}
                 />
               )}
-            </FormItem>
-            <FormItem hasFeedback>
+            </Form.Item>
+            <Form.Item hasFeedback>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码！' }]
               })(
@@ -61,12 +59,12 @@ class NormalLoginForm extends React.Component {
                   type="password"
                 />
               )}
-            </FormItem>
-            <FormItem>
-              <Button className="sign-in-btn" htmlType="submit" type="primary">
+            </Form.Item>
+            <Form.Item>
+              <Button className="sign-in-btn" htmltype="submit" type="primary">
                 登录
               </Button>
-            </FormItem>
+            </Form.Item>
           </Form>
         </div>
       </div>

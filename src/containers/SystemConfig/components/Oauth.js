@@ -1,6 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Icon, Modal, Button, Form, Input, Select } from 'antd'
+import {
+  Icon,
+  Modal,
+  Button,
+  Form,
+  Input,
+  Select,
+  Checkbox,
+  Row,
+  Col
+} from 'antd'
 import { Link } from 'react-router-dom'
 
 import { getSystemConfigInfo, updateSystemConfigInfo } from '../actions'
@@ -17,13 +27,13 @@ const confirm = Modal.confirm
     stateSystemConfig
   }
 })
-class SystemConfig extends React.Component {
+class Oauth extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       is_edit: false,
       loading: false,
-      type: ''
+      checkedValues: []
     }
   }
 
@@ -34,11 +44,16 @@ class SystemConfig extends React.Component {
   async system_config_info() {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
+        const oauth = result.oauth || {}
+        const oauthGithub = oauth.oauth_github || {}
         this.setState({
-          type: result.email.type
+          checkedValues: oauth.oauths || []
         })
         this.props.form.setFieldsValue({
-          ...result.email
+          oauths: oauth.oauths,
+          githubClientId: oauthGithub.client_id || '',
+          githubClientSecret: oauthGithub.client_secret || '',
+          githubRedirectUri: oauthGithub.redirect_uri || ''
         })
       })
     )
@@ -51,9 +66,14 @@ class SystemConfig extends React.Component {
         this.props.dispatch(
           updateSystemConfigInfo(
             {
-              type: 'email',
-              email: {
-                ...values
+              type: 'oauth',
+              oauth: {
+                oauths: values.oauths,
+                oauth_github: {
+                  client_id: values.githubClientId,
+                  client_secret: values.githubClientSecret,
+                  redirect_uri: values.githubRedirectUri
+                }
               }
             },
             result => {
@@ -69,7 +89,7 @@ class SystemConfig extends React.Component {
   }
 
   render() {
-    const { is_edit } = this.state
+    const { is_edit, checkedValues } = this.state
     const { getFieldDecorator } = this.props.form
 
     const itemLayout = {
@@ -97,7 +117,7 @@ class SystemConfig extends React.Component {
     return (
       <div className="layout-main" id="system-config">
         <div className="layout-main-title">
-          <h4 className="header-title">邮箱修改or绑定</h4>
+          <h4 className="header-title">第三方oauth登录</h4>
         </div>
 
         <div className="layout-nav-btn"></div>
@@ -105,110 +125,79 @@ class SystemConfig extends React.Component {
         <div className="card layout-card-view">
           <div className="card-body sc-content-view">
             <Form className="from-view" onSubmit={this.handleSubmit.bind(this)}>
-              <Form.Item {...itemLayout} label="系统类型">
-                {getFieldDecorator('type', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入系统类型！',
-                      whitespace: true
-                    }
-                  ]
-                })(
-                  <Select
+              <Form.Item label="勾选第三方授权登录">
+                {getFieldDecorator('oauths')(
+                  <Checkbox.Group
+                    style={{ width: '100%' }}
                     disabled={!is_edit}
-                    onChange={value => {
+                    onChange={checkedValues => {
                       this.setState({
-                        type: value
+                        checkedValues: checkedValues
                       })
                     }}
                   >
-                    <Option value="company">企业</Option>
-                    <Option value="personal">个人</Option>
-                  </Select>
+                    <Row>
+                      <Col span={8}>
+                        <Checkbox value="github">github</Checkbox>
+                      </Col>
+                      <Col span={8}>
+                        <Checkbox value="qq">qq</Checkbox>
+                      </Col>
+                    </Row>
+                  </Checkbox.Group>
                 )}
-              </Form.Item>
-              <Form.Item {...itemLayout} label="系统邮箱">
-                {getFieldDecorator('user', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入系统邮箱！',
-                      whitespace: true
-                    }
-                  ]
-                })(<Input disabled={!is_edit} placeholder="邮箱" />)}
               </Form.Item>
 
               <div
+                className="github"
                 style={{
-                  display: this.state.type === 'company' ? 'block' : 'none'
+                  display: ~checkedValues.indexOf('github') ? 'block' : 'none'
                 }}
               >
-                <Form.Item {...itemLayout} label="服务商服务器地址">
-                  {getFieldDecorator('host', {
+                <div className="github-title">github授权登录</div>
+
+                <Form.Item {...itemLayout} label="client_id">
+                  {getFieldDecorator('githubClientId', {
                     rules: [
                       {
                         required: true,
-                        message: '请输入服务商服务器地址！',
-                        whitespace: true
+                        message: 'Please input client_id!'
                       }
                     ]
-                  })(<Input disabled={!is_edit} placeholder="服务器地址" />)}
+                  })(<Input disabled={!is_edit} />)}
                 </Form.Item>
-                <Form.Item {...itemLayout} label="系统邮箱服务商端口">
-                  {getFieldDecorator('port', {
+
+                <Form.Item {...itemLayout} label="client_secret">
+                  {getFieldDecorator('githubClientSecret', {
                     rules: [
                       {
                         required: true,
-                        message: '请输入系统邮箱服务商端口！',
-                        whitespace: true
+                        message: 'Please input client_secret!'
                       }
                     ]
-                  })(<Input disabled={!is_edit} placeholder="服务商端口" />)}
+                  })(<Input disabled={!is_edit} />)}
+                </Form.Item>
+
+                <Form.Item {...itemLayout} label="redirect_uri">
+                  {getFieldDecorator('githubRedirectUri', {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'Please input redirect_uri!'
+                      }
+                    ]
+                  })(<Input disabled={!is_edit} />)}
                 </Form.Item>
               </div>
 
-              <Form.Item
-                {...itemLayout}
-                label="系统邮箱服务商后缀"
+              <div
+                className="qq"
                 style={{
-                  display: this.state.type === 'company' ? 'none' : 'block'
+                  display: ~checkedValues.indexOf('qq') ? 'block' : 'none'
                 }}
               >
-                {getFieldDecorator('service', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入邮箱服务商后缀！',
-                      whitespace: true
-                    }
-                  ]
-                })(
-                  <Input
-                    disabled={!is_edit}
-                    placeholder="（例如：qq、163等等）"
-                  />
-                )}
-              </Form.Item>
-
-              <Form.Item {...itemLayout} label="系统邮箱密码">
-                {getFieldDecorator('pass', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入邮箱密码！',
-                      whitespace: true
-                    }
-                  ]
-                })(
-                  <Input
-                    disabled={!is_edit}
-                    type="password"
-                    placeholder="邮箱密码"
-                  />
-                )}
-              </Form.Item>
+                <div className="qq-title">qq授权登录(暂未开放)</div>
+              </div>
 
               <Form.Item {...tailItemLayout}>
                 {!is_edit ? (
@@ -257,6 +246,6 @@ class SystemConfig extends React.Component {
   }
 }
 
-const SystemConfigForm = Form.create()(SystemConfig)
+const OauthForm = Form.create()(Oauth)
 
-export default SystemConfigForm
+export default OauthForm

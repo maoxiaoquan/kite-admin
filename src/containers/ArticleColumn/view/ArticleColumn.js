@@ -27,7 +27,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -361,7 +361,7 @@ class ArticleColumn extends React.Component {
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 6 }
@@ -371,7 +371,7 @@ class ArticleColumn extends React.Component {
         sm: { span: 18 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -425,7 +425,7 @@ class ArticleColumn extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="专栏名">
+                <Form.Item {...itemLayout} label="专栏名">
                   {getFieldDecorator('name', {
                     rules: [
                       {
@@ -435,9 +435,9 @@ class ArticleColumn extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专栏名" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="专栏名单词">
+                <Form.Item {...itemLayout} label="专栏名单词">
                   {getFieldDecorator('en_name', {
                     rules: [
                       {
@@ -447,9 +447,9 @@ class ArticleColumn extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专栏名单词" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="专栏名图标">
+                <Form.Item {...itemLayout} label="专栏名图标">
                   {getFieldDecorator('icon', {
                     rules: [
                       {
@@ -459,9 +459,9 @@ class ArticleColumn extends React.Component {
                       }
                     ]
                   })(<Input placeholder="专栏名图标" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="专栏下属专题">
+                <Form.Item {...itemLayout} label="专栏下属专题">
                   {getFieldDecorator('tag_ids', {
                     rules: [
                       {
@@ -480,39 +480,39 @@ class ArticleColumn extends React.Component {
                       ))}
                     </Select>
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="排序">
+                <Form.Item {...itemLayout} label="排序">
                   {getFieldDecorator('sort')(<InputNumber />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="专栏描述">
+                <Form.Item {...itemLayout} hasFeedback label="专栏描述">
                   {getFieldDecorator('description', {
                     rules: [{ required: true, message: '请输入专栏描述' }]
                   })(<TextArea placeholder="请输入专栏描述" type="text" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否首页显示">
+                <Form.Item {...itemLayout} label="是否首页显示">
                   {getFieldDecorator('is_home', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建专栏' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

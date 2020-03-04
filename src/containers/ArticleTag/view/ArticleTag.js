@@ -23,7 +23,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -313,7 +313,7 @@ class ArticleTag extends React.Component {
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 8 }
@@ -323,7 +323,7 @@ class ArticleTag extends React.Component {
         sm: { span: 16 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -377,7 +377,7 @@ class ArticleTag extends React.Component {
               visible={this.state.modal_visible_edit}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="标签名">
+                <Form.Item {...itemLayout} label="标签名">
                   {getFieldDecorator('name', {
                     rules: [
                       {
@@ -387,9 +387,9 @@ class ArticleTag extends React.Component {
                       }
                     ]
                   })(<Input placeholder="标签名" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="标签名单词">
+                <Form.Item {...itemLayout} label="标签名单词">
                   {getFieldDecorator('en_name', {
                     rules: [
                       {
@@ -399,9 +399,9 @@ class ArticleTag extends React.Component {
                       }
                     ]
                   })(<Input placeholder="标签单词" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="标签图标地址">
+                <Form.Item {...itemLayout} label="标签图标地址">
                   {getFieldDecorator('icon', {
                     rules: [
                       {
@@ -411,35 +411,35 @@ class ArticleTag extends React.Component {
                       }
                     ]
                   })(<Input placeholder="标签图标地址" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} hasFeedback label="标签描述">
+                <Form.Item {...itemLayout} hasFeedback label="标签描述">
                   {getFieldDecorator('description', {
                     rules: [{ required: true, message: '请输入标签描述' }]
                   })(<TextArea placeholder="请输入标签描述" type="text" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否加入首页或者推荐">
+                <Form.Item {...itemLayout} label="是否加入首页或者推荐">
                   {getFieldDecorator('is_push', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建标签' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 

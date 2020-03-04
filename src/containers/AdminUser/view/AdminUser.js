@@ -26,7 +26,7 @@ import {
 import alert from '../../../utils/alert'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 
 class AdminUser extends React.Component {
@@ -405,7 +405,7 @@ class AdminUser extends React.Component {
       </Select>
     )
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -415,7 +415,7 @@ class AdminUser extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -469,7 +469,7 @@ class AdminUser extends React.Component {
               visible={this.state.modal_visible_register}
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
-                <FormItem {...formItemLayout} label="账户">
+                <Form.Item {...itemLayout} label="账户">
                   {getFieldDecorator('account', {
                     rules: [
                       {
@@ -479,9 +479,9 @@ class AdminUser extends React.Component {
                       }
                     ]
                   })(<Input placeholder="账户" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="昵称">
+                <Form.Item {...itemLayout} label="昵称">
                   {getFieldDecorator('nickname', {
                     rules: [
                       {
@@ -491,9 +491,9 @@ class AdminUser extends React.Component {
                       }
                     ]
                   })(<Input placeholder="昵称" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="密码">
+                <Form.Item {...itemLayout} label="密码">
                   {getFieldDecorator('password', {
                     rules: [
                       {
@@ -505,9 +505,9 @@ class AdminUser extends React.Component {
                       }
                     ]
                   })(<Input placeholder="密码" type="password" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="重复密码">
+                <Form.Item {...itemLayout} label="重复密码">
                   {getFieldDecorator('confirm', {
                     rules: [
                       {
@@ -525,9 +525,9 @@ class AdminUser extends React.Component {
                       type="password"
                     />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="电子邮件">
+                <Form.Item {...itemLayout} label="电子邮件">
                   {getFieldDecorator('email', {
                     rules: [
                       {
@@ -540,9 +540,9 @@ class AdminUser extends React.Component {
                       }
                     ]
                   })(<Input placeholder="邮箱" />)}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="手机号码">
+                <Form.Item {...itemLayout} label="手机号码">
                   {getFieldDecorator('phone', {
                     rules: [{ required: true, message: '请输入你的手机号码！' }]
                   })(
@@ -551,23 +551,23 @@ class AdminUser extends React.Component {
                       style={{ width: '100%' }}
                     />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...formItemLayout} label="是否有效">
+                <Form.Item {...itemLayout} label="是否有效">
                   {getFieldDecorator('enable', { valuePropName: 'checked' })(
                     <Switch />
                   )}
-                </FormItem>
+                </Form.Item>
 
-                <FormItem {...tailFormItemLayout}>
+                <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建账户' : '更新'}
                   </Button>
-                </FormItem>
+                </Form.Item>
               </Form>
             </Modal>
 
@@ -581,14 +581,14 @@ class AdminUser extends React.Component {
               title="修改用户权限"
               visible={this.state.modal_visible_authority}
             >
-              <FormItem {...formItemLayout} label="管理员账户">
+              <Form.Item {...itemLayout} label="管理员账户">
                 <Input
                   disabled={true}
                   type="text"
                   value={stateAdminUser.current_user_info.account}
                 />
-              </FormItem>
-              <FormItem {...formItemLayout} label="角色类型">
+              </Form.Item>
+              <Form.Item {...itemLayout} label="角色类型">
                 <Select
                   placeholder="请设置权限"
                   style={{ width: 150 }}
@@ -598,8 +598,8 @@ class AdminUser extends React.Component {
                     <Option key={item.role_id}>{item.role_name}</Option>
                   ))}
                 </Select>
-              </FormItem>
-              <FormItem {...tailFormItemLayout}>
+              </Form.Item>
+              <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
                   type="primary"
@@ -607,7 +607,7 @@ class AdminUser extends React.Component {
                 >
                   修改权限
                 </Button>
-              </FormItem>
+              </Form.Item>
             </Modal>
 
             <Table

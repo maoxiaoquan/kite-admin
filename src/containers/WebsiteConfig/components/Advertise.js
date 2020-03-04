@@ -22,7 +22,7 @@ import {
 } from '../actions/WebsiteConfigAction'
 
 const Option = Select.Option
-const FormItem = Form.Item
+
 const confirm = Modal.confirm
 const { TextArea } = Input
 
@@ -231,7 +231,7 @@ class _Advertise extends React.Component {
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
+    const itemLayout = {
       labelCol: {
         xs: { span: 24 },
         sm: { span: 5 }
@@ -241,7 +241,7 @@ class _Advertise extends React.Component {
         sm: { span: 19 }
       }
     }
-    const tailFormItemLayout = {
+    const tailItemLayout = {
       wrapperCol: {
         xs: {
           span: 24,
@@ -257,7 +257,7 @@ class _Advertise extends React.Component {
     return (
       <div className="card layout-main" id="system-config">
         <div className="card-body">
-          <h4 class="header-title">系统Banner</h4>
+          <h4 className="header-title">系统Banner</h4>
           <button
             className="btn btn-danger"
             icon="plus"
@@ -279,7 +279,7 @@ class _Advertise extends React.Component {
             visible={this.state.modal_visible_edit}
           >
             <Form className="from-view" onSubmit={this.handleSubmit}>
-              <FormItem {...formItemLayout} label="广告标题">
+              <Form.Item {...itemLayout} label="广告标题">
                 {getFieldDecorator('title', {
                   rules: [
                     {
@@ -288,9 +288,9 @@ class _Advertise extends React.Component {
                     }
                   ]
                 })(<Input placeholder="广告标题" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="广告链接">
+              <Form.Item {...itemLayout} label="广告链接">
                 {getFieldDecorator('link', {
                   rules: [
                     {
@@ -299,29 +299,29 @@ class _Advertise extends React.Component {
                     }
                   ]
                 })(<Input placeholder="广告链接" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} hasFeedback label="背景图片">
+              <Form.Item {...itemLayout} hasFeedback label="背景图片">
                 {getFieldDecorator('img_url', {
                   rules: [{ message: '请输入背景图片链接' }]
                 })(<Input placeholder="背景图片链接" type="text" />)}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...formItemLayout} label="是否有效">
+              <Form.Item {...itemLayout} label="是否有效">
                 {getFieldDecorator('enable', { valuePropName: 'checked' })(
                   <Switch />
                 )}
-              </FormItem>
+              </Form.Item>
 
-              <FormItem {...tailFormItemLayout}>
+              <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmlType="submit"
+                  htmltype="submit"
                   type="primary"
                 >
                   {is_create ? '更新' : '创建广告'}
                 </Button>
-              </FormItem>
+              </Form.Item>
             </Form>
           </Modal>
 
