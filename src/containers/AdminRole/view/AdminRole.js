@@ -423,7 +423,7 @@ class AdminRole extends React.Component {
               <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmltype="submit"
+                  htmlType="submit"
                   onClick={this.handleOk}
                   type="primary"
                 >

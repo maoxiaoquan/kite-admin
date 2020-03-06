@@ -227,7 +227,7 @@ class SystemConfig extends React.Component {
                   <div>
                     <button
                       className="btn btn-primary"
-                      htmltype="submit"
+                      htmlType="submit"
                       type="primary"
                       style={{ marginRight: '10px' }}
                     >

@@ -443,7 +443,7 @@ class User extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmltype="submit"
+                    htmlType="submit"
                     type="primary"
                   >
                     确定

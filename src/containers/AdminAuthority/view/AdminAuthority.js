@@ -427,7 +427,7 @@ class AdminAuthority extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="login-form-button"
-                    htmltype="submit"
+                    htmlType="submit"
                     type="primary"
                   >
                     {this.state.is_create ? '提交' : '修改'}

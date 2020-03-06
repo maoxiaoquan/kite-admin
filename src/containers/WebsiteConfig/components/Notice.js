@@ -316,7 +316,7 @@ class _Notice extends React.Component {
               <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmltype="submit"
+                  htmlType="submit"
                   type="primary"
                 >
                   {is_create ? '更新' : '创建公告'}

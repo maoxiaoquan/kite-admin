@@ -338,7 +338,7 @@ class ArticleBlog extends React.Component {
             )}
 
             <Form.Item {...tailItemLayout}>
-              <Button className="register-btn" htmltype="submit" type="primary">
+              <Button className="register-btn" htmlType="submit" type="primary">
                 {is_create ? '创建专栏' : '更新'}
               </Button>
             </Form.Item>
