@@ -37,11 +37,11 @@ class Oauth extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     this.system_config_info()
   }
 
-  async system_config_info() {
+  async system_config_info () {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
         const oauth = result.oauth || {}
@@ -59,7 +59,7 @@ class Oauth extends React.Component {
     )
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -88,7 +88,7 @@ class Oauth extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { is_edit, checkedValues } = this.state
     const { getFieldDecorator } = this.props.form
 
@@ -178,7 +178,7 @@ class Oauth extends React.Component {
                   })(<Input disabled={!is_edit} />)}
                 </Form.Item>
 
-                <Form.Item {...itemLayout} label="redirect_uri">
+                <Form.Item {...itemLayout} label="redirect_uri（当前域名+/oauth/github 此段是必须固定）">
                   {getFieldDecorator('githubRedirectUri', {
                     rules: [
                       {
@@ -213,30 +213,30 @@ class Oauth extends React.Component {
                     修改
                   </button>
                 ) : (
-                  <div>
-                    <button
-                      className="btn btn-primary"
-                      htmlType="submit"
-                      type="primary"
-                      style={{ marginRight: '10px' }}
-                    >
-                      确定
+                    <div>
+                      <button
+                        className="btn btn-primary"
+                        htmlType="submit"
+                        type="primary"
+                        style={{ marginRight: '10px' }}
+                      >
+                        确定
                     </button>
 
-                    <button
-                      className="btn btn-light"
-                      onClick={() => {
-                        this.system_config_info()
-                        this.setState({
-                          is_edit: false
-                        })
-                      }}
-                      type="primary"
-                    >
-                      取消
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          this.system_config_info()
+                          this.setState({
+                            is_edit: false
+                          })
+                        }}
+                        type="primary"
+                      >
+                        取消
                     </button>
-                  </div>
-                )}
+                    </div>
+                  )}
               </Form.Item>
             </Form>
           </div>
