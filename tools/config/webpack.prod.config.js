@@ -110,27 +110,23 @@ const production = {
   },
   optimization: {
     splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
-        vendor: {
-          chunks: 'all',
-          test: /node_modules/,
-          name: 'vendor',
-          minChunks: 1,
-          maxInitialRequests: 5,
-          minSize: 0,
-          priority: 100
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
         },
-        common: {
-          chunks: 'all',
-          test: /[\\/]src[\\/]js[\\/]/,
-          name: 'common',
+        default: {
           minChunks: 2,
-          maxInitialRequests: 5,
-          minSize: 0,
-          priority: 60
-        },
-        runtimeChunk: {
-          name: 'manifest'
+          priority: -20,
+          reuseExistingChunk: true
         }
       }
     }
