@@ -91,7 +91,7 @@ class ArticleColumn extends React.Component {
             return (
               <div className="table-article-tag-view">
                 {this.state.article_tag_all.map((item, key) => {
-                  let tags = record.tag_ids.split(',')
+                  let tags = record.tag_ids ? record.tag_ids.split(',') : []
                   return tags.map((child_item, child_key) => {
                     if (item.tag_id === child_item) {
                       return (
@@ -125,8 +125,8 @@ class ArticleColumn extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -141,8 +141,8 @@ class ArticleColumn extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -191,7 +191,7 @@ class ArticleColumn extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchArticleColumnList()
     this.props.dispatch(
       getArticleTagAll('', res => {
@@ -230,7 +230,7 @@ class ArticleColumn extends React.Component {
         })
         /*删除专栏*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -356,7 +356,7 @@ class ArticleColumn extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateArticleColumn } = this.props
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
