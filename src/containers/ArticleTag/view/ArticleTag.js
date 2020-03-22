@@ -96,7 +96,7 @@ class ArticleTag extends React.Component {
           }
         },
         {
-          title: '是否加入首页或者推荐',
+          title: '文章是否加入首页或者推荐',
           dataIndex: 'is_push',
           key: 'is_push',
           render: (value, record) => {
@@ -425,7 +425,7 @@ class ArticleTag extends React.Component {
                   )}
                 </Form.Item>
 
-                <Form.Item {...itemLayout} label="是否加入首页或者推荐">
+                <Form.Item {...itemLayout} label="文章是否加入首页或者推荐">
                   {getFieldDecorator('is_push', { valuePropName: 'checked' })(
                     <Switch />
                   )}
