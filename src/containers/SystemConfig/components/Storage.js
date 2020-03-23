@@ -33,15 +33,15 @@ class Oauth extends React.Component {
     this.state = {
       is_edit: false,
       loading: false,
-      serviceProvider: ""
+      serviceProvider: ''
     }
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     this.systemConfigInfo()
   }
 
-  async systemConfigInfo () {
+  async systemConfigInfo() {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
         const storage = result.storage || {}
@@ -55,7 +55,7 @@ class Oauth extends React.Component {
     )
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -79,7 +79,7 @@ class Oauth extends React.Component {
     })
   }
 
-  render () {
+  render() {
     const { is_edit, serviceProvider } = this.state
     const { getFieldDecorator } = this.props.form
 
@@ -116,8 +116,6 @@ class Oauth extends React.Component {
         <div className="card layout-card-view">
           <div className="card-body sc-content-view">
             <Form className="from-view" onSubmit={this.handleSubmit.bind(this)}>
-
-
               <Form.Item {...itemLayout} label="第三方存储服务商">
                 {getFieldDecorator('serviceProvider', {
                   rules: [
@@ -136,21 +134,18 @@ class Oauth extends React.Component {
                       })
                     }}
                   >
-                    <Option value='default'>默认</Option>
-                    <Option value='qiniu'>qiniu</Option>
-                    <Option value='aliyun'>阿里云</Option>
-                    <Option value='tengxun'>腾讯</Option>
-
+                    <Option value="default">默认</Option>
+                    <Option value="qiniu">qiniu</Option>
+                    <Option value="aliyun">阿里云</Option>
+                    <Option value="tengxun">腾讯</Option>
                   </Select>
                 )}
               </Form.Item>
-
 
               <Form.Item {...itemLayout} label="domain">
                 {getFieldDecorator('domain', {
                   rules: [
                     {
-                      required: true,
                       message: 'Please input domain!'
                     }
                   ]
@@ -161,13 +156,11 @@ class Oauth extends React.Component {
                 {getFieldDecorator('bucket', {
                   rules: [
                     {
-                      required: true,
                       message: 'Please input bucket!'
                     }
                   ]
                 })(<Input disabled={!is_edit} />)}
               </Form.Item>
-
 
               <div
                 className="qiniu"
@@ -181,7 +174,6 @@ class Oauth extends React.Component {
                   {getFieldDecorator('accessKey', {
                     rules: [
                       {
-                        required: true,
                         message: 'Please input accessKey!'
                       }
                     ]
@@ -192,13 +184,11 @@ class Oauth extends React.Component {
                   {getFieldDecorator('secretKey', {
                     rules: [
                       {
-                        required: true,
                         message: 'Please input secretKey!'
                       }
                     ]
                   })(<Input disabled={!is_edit} />)}
                 </Form.Item>
-
               </div>
 
               <div
@@ -224,30 +214,30 @@ class Oauth extends React.Component {
                     修改
                   </button>
                 ) : (
-                    <div>
-                      <button
-                        className="btn btn-primary"
-                        htmltype="submit"
-                        type="primary"
-                        style={{ marginRight: '10px' }}
-                      >
-                        确定
+                  <div>
+                    <button
+                      className="btn btn-primary"
+                      htmltype="submit"
+                      type="primary"
+                      style={{ marginRight: '10px' }}
+                    >
+                      确定
                     </button>
 
-                      <button
-                        className="btn btn-light"
-                        onClick={() => {
-                          this.systemConfigInfo()
-                          this.setState({
-                            is_edit: false
-                          })
-                        }}
-                        type="primary"
-                      >
-                        取消
+                    <button
+                      className="btn btn-light"
+                      onClick={() => {
+                        this.systemConfigInfo()
+                        this.setState({
+                          is_edit: false
+                        })
+                      }}
+                      type="primary"
+                    >
+                      取消
                     </button>
-                    </div>
-                  )}
+                  </div>
+                )}
               </Form.Item>
             </Form>
           </div>
