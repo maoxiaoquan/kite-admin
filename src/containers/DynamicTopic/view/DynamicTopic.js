@@ -96,8 +96,8 @@ class DynamicTopic extends React.Component {
                 {record.is_show ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -112,8 +112,8 @@ class DynamicTopic extends React.Component {
                 {record.enable ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -128,8 +128,8 @@ class DynamicTopic extends React.Component {
                 {record.is_push ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -177,7 +177,7 @@ class DynamicTopic extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchDynamicTopicList()
   }
 
@@ -207,7 +207,7 @@ class DynamicTopic extends React.Component {
         })
         /*删除专题*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -330,7 +330,7 @@ class DynamicTopic extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateDynamicTopic } = this.props
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
@@ -466,7 +466,7 @@ class DynamicTopic extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建专题' : '更新'}

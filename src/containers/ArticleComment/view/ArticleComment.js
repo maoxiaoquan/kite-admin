@@ -130,7 +130,7 @@ class ArticleComment extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchCommentList()
   }
 
@@ -159,7 +159,7 @@ class ArticleComment extends React.Component {
         })
         /*删除用户评论*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -267,7 +267,7 @@ class ArticleComment extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateArticleComment } = this.props
     const { loading, content_val, status_val } = this.state
     const { getFieldDecorator } = this.props.form
@@ -396,7 +396,7 @@ class ArticleComment extends React.Component {
             </Form.Item>
 
             <Form.Item {...tailItemLayout}>
-              <Button className="register-btn" htmlType="submit" type="primary">
+              <Button className="register-btn" htmltype="submit" type="primary">
                 确定
               </Button>
             </Form.Item>

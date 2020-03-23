@@ -3,21 +3,17 @@ import { connect } from 'react-redux'
 import {
   Icon,
   Modal,
-  Table,
   Button,
   Form,
   Input,
   Select,
-  Switch,
-  Tag
+  Checkbox,
+  Row,
+  Col
 } from 'antd'
 import { Link } from 'react-router-dom'
 
-import {
-  getSystemConfigInfo,
-  updateSystemConfigInfo,
-  getSystemThemeList
-} from '../actions'
+import { getSystemConfigInfo, updateSystemConfigInfo } from '../actions'
 import alert from '../../../utils/alert'
 
 import { getUserRoleAll } from '../../UserRole/actions/UserRoleAction'
@@ -31,36 +27,29 @@ const confirm = Modal.confirm
     stateSystemConfig
   }
 })
-class Theme extends React.Component {
+class Oauth extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       is_edit: false,
       loading: false,
-      themeList: []
+      serviceProvider: ""
     }
   }
 
   async componentDidMount () {
     this.systemConfigInfo()
-    this.getSTList()
   }
 
   async systemConfigInfo () {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
-        this.props.form.setFieldsValue({
-          theme: result.config.theme || 'default'
-        })
-      })
-    )
-  }
-
-  getSTList () {
-    this.props.dispatch(
-      getSystemThemeList({}, result => {
+        const storage = result.storage || {}
         this.setState({
-          themeList: result.list || []
+          serviceProvider: storage.serviceProvider || []
+        })
+        this.props.form.setFieldsValue({
+          ...storage
         })
       })
     )
@@ -70,13 +59,12 @@ class Theme extends React.Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        let { theme } = values
         this.props.dispatch(
           updateSystemConfigInfo(
             {
-              type: 'config',
-              config: {
-                theme
+              type: 'storage',
+              storage: {
+                ...values
               }
             },
             result => {
@@ -92,7 +80,7 @@ class Theme extends React.Component {
   }
 
   render () {
-    const { is_edit, themeList } = this.state
+    const { is_edit, serviceProvider } = this.state
     const { getFieldDecorator } = this.props.form
 
     const itemLayout = {
@@ -120,16 +108,18 @@ class Theme extends React.Component {
     return (
       <div className="layout-main" id="system-config">
         <div className="layout-main-title">
-          <h4 className="header-title">主题功能</h4>
+          <h4 className="header-title">外部存储</h4>
         </div>
 
-        <div className="layout-nav-btn" />
+        <div className="layout-nav-btn"></div>
 
         <div className="card layout-card-view">
           <div className="card-body sc-content-view">
             <Form className="from-view" onSubmit={this.handleSubmit.bind(this)}>
-              <Form.Item {...itemLayout} label="选择主题">
-                {getFieldDecorator('theme', {
+
+
+              <Form.Item {...itemLayout} label="第三方存储服务商">
+                {getFieldDecorator('serviceProvider', {
                   rules: [
                     {
                       required: true,
@@ -142,20 +132,83 @@ class Theme extends React.Component {
                     disabled={!is_edit}
                     onChange={value => {
                       this.setState({
-                        type: value
+                        serviceProvider: value
                       })
                     }}
                   >
-                    {themeList.map((item, key) => {
-                      return (
-                        <Option value={item} key="key">
-                          {item}
-                        </Option>
-                      )
-                    })}
+                    <Option value='default'>默认</Option>
+                    <Option value='qiniu'>qiniu</Option>
+                    <Option value='aliyun'>阿里云</Option>
+                    <Option value='tengxun'>腾讯</Option>
+
                   </Select>
                 )}
               </Form.Item>
+
+
+              <Form.Item {...itemLayout} label="domain">
+                {getFieldDecorator('domain', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input domain!'
+                    }
+                  ]
+                })(<Input disabled={!is_edit} />)}
+              </Form.Item>
+
+              <Form.Item {...itemLayout} label="bucket">
+                {getFieldDecorator('bucket', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input bucket!'
+                    }
+                  ]
+                })(<Input disabled={!is_edit} />)}
+              </Form.Item>
+
+
+              <div
+                className="qiniu"
+                style={{
+                  display: serviceProvider === 'qiniu' ? 'block' : 'none'
+                }}
+              >
+                <div className="title">七牛</div>
+
+                <Form.Item {...itemLayout} label="accessKey">
+                  {getFieldDecorator('accessKey', {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'Please input accessKey!'
+                      }
+                    ]
+                  })(<Input disabled={!is_edit} />)}
+                </Form.Item>
+
+                <Form.Item {...itemLayout} label="secretKey">
+                  {getFieldDecorator('secretKey', {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'Please input secretKey!'
+                      }
+                    ]
+                  })(<Input disabled={!is_edit} />)}
+                </Form.Item>
+
+              </div>
+
+              <div
+                className="aliyun"
+                style={{
+                  display: serviceProvider === 'aliyun' ? 'block' : 'none'
+                }}
+              >
+                <div className="title">阿里云</div>
+              </div>
 
               <Form.Item {...tailItemLayout}>
                 {!is_edit ? (
@@ -174,6 +227,7 @@ class Theme extends React.Component {
                     <div>
                       <button
                         className="btn btn-primary"
+                        htmltype="submit"
                         type="primary"
                         style={{ marginRight: '10px' }}
                       >
@@ -183,6 +237,7 @@ class Theme extends React.Component {
                       <button
                         className="btn btn-light"
                         onClick={() => {
+                          this.systemConfigInfo()
                           this.setState({
                             is_edit: false
                           })
@@ -202,6 +257,6 @@ class Theme extends React.Component {
   }
 }
 
-const ThemeForm = Form.create()(Theme)
+const OauthForm = Form.create()(Oauth)
 
-export default ThemeForm
+export default OauthForm

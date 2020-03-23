@@ -108,8 +108,8 @@ class UserRole extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -124,8 +124,8 @@ class UserRole extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -179,8 +179,8 @@ class UserRole extends React.Component {
                     设置权限
                   </button>
                 ) : (
-                  ''
-                )}
+                    ''
+                  )}
               </div>
             )
           }
@@ -202,7 +202,7 @@ class UserRole extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchUserRoleList()
     /*获取后台权限所有*/
     this.props.dispatch(getUserAuthorityList())
@@ -255,7 +255,7 @@ class UserRole extends React.Component {
         })
         /*删除角色*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -428,7 +428,7 @@ class UserRole extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { stateUserRole, stateUserAuthority } = this.props
     const { loading, is_create, user_role_type_list } = this.state
     const { getFieldDecorator } = this.props.form
@@ -564,7 +564,7 @@ class UserRole extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建角色' : '更新'}

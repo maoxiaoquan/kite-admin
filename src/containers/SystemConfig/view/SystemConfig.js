@@ -7,6 +7,7 @@ import WebsiteInfo from '../components/WebsiteInfo'
 import WebConfig from '../components/WebConfig'
 import Oauth from '../components/Oauth'
 import Theme from '../components/Theme'
+import Storage from '../components/Storage'
 
 import './SystemConfig.scss'
 
@@ -16,7 +17,7 @@ import './SystemConfig.scss'
   }
 })
 class SystemConfig extends React.Component {
-  render() {
+  render () {
     return (
       <div className="layout-main" id="system-config">
         <div className="layout-main-title">
@@ -34,11 +35,12 @@ class SystemConfig extends React.Component {
           </Breadcrumb>
         </div>
 
-        <EmailBind></EmailBind>
-        <WebsiteInfo></WebsiteInfo>
-        <WebConfig></WebConfig>
-        <Oauth></Oauth>
-        <Theme></Theme>
+        <EmailBind />
+        <WebsiteInfo />
+        <WebConfig />
+        <Oauth />
+        <Theme />
+        <Storage />
         <Alert
           message="备注"
           description="由于是系统配置，修改时请谨慎，修改成功某些配置后，如果未生效或者出现错误，请务必重启服务"

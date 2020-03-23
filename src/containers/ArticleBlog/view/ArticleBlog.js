@@ -117,7 +117,7 @@ class ArticleBlog extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchArticleBlogList()
   }
 
@@ -224,7 +224,7 @@ class ArticleBlog extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const {
       loading,
       status_list,
@@ -321,24 +321,24 @@ class ArticleBlog extends React.Component {
             </Form.Item>
 
             {Number(edit_status_val) ===
-            this.state.otherStatusList.reviewFail ? (
-              <Form.Item {...itemLayout} label="拒绝的原因">
-                {getFieldDecorator('rejection_reason', {
-                  rules: [
-                    {
-                      required: true,
-                      message: '请输入拒绝的原因！',
-                      whitespace: true
-                    }
-                  ]
-                })(<Input placeholder="文章专栏被拒绝的原因" />)}
-              </Form.Item>
-            ) : (
-              ''
-            )}
+              this.state.otherStatusList.reviewFail ? (
+                <Form.Item {...itemLayout} label="拒绝的原因">
+                  {getFieldDecorator('rejection_reason', {
+                    rules: [
+                      {
+                        required: true,
+                        message: '请输入拒绝的原因！',
+                        whitespace: true
+                      }
+                    ]
+                  })(<Input placeholder="文章专栏被拒绝的原因" />)}
+                </Form.Item>
+              ) : (
+                ''
+              )}
 
             <Form.Item {...tailItemLayout}>
-              <Button className="register-btn" htmlType="submit" type="primary">
+              <Button className="register-btn" htmltype="submit" type="primary">
                 {is_create ? '创建专栏' : '更新'}
               </Button>
             </Form.Item>

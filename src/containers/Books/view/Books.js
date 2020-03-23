@@ -161,11 +161,11 @@ class Books extends React.Component {
     edit_status_val: ''
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchBooksList()
   }
 
-  editUser(val) {
+  editUser (val) {
     console.log('val', val)
     this.setState({
       modal_visible_edit: true,
@@ -178,7 +178,7 @@ class Books extends React.Component {
     this.props.dispatch({ type: 'BOOKS_SET_CURRENT_INFO', data: val })
   }
 
-  deleteBooks(val) {
+  deleteBooks (val) {
     this.props.dispatch({ type: 'BOOKS_SET_CURRENT_INFO', data: val })
     confirm({
       title: '确认要删除此小书吗？',
@@ -192,7 +192,7 @@ class Books extends React.Component {
         })
         /*删除小书*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -292,7 +292,7 @@ class Books extends React.Component {
     this.setState(data)
   }
 
-  render() {
+  render () {
     const { loading, title_val, status_val, edit_status_val } = this.state
     const { stateBooks = {} } = this.props
     const { getFieldDecorator } = this.props.form
@@ -429,13 +429,13 @@ class Books extends React.Component {
                     })(<Input placeholder="小书被拒绝的原因" />)}
                   </Form.Item>
                 ) : (
-                  ''
-                )}
+                    ''
+                  )}
 
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     更新

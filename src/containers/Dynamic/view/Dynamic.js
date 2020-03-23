@@ -199,7 +199,7 @@ class Dynamic extends React.Component {
     dynamicTopicAll: []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchDynamicList()
     this.props.dispatch(
       getDynamicTopicAll('', res => {
@@ -211,7 +211,7 @@ class Dynamic extends React.Component {
     )
   }
 
-  editUser(val) {
+  editUser (val) {
     console.log('val', val)
     this.setState({
       modal_visible_edit: true,
@@ -226,7 +226,7 @@ class Dynamic extends React.Component {
     this.props.dispatch({ type: 'DYNAMIC_SET_CURRENT_INFO', data: val })
   }
 
-  renderAttach(item) {
+  renderAttach (item) {
     // 渲染其他
     if (item.type === this.state.dynamicType.link) {
       return `<a href="${item.attach}" target="_block">
@@ -241,13 +241,13 @@ class Dynamic extends React.Component {
     }
   }
 
-  imgAnalyze(attach) {
+  imgAnalyze (attach) {
     let urlArr = attach.split(',') || []
     let length = attach.split(',').length
     return length > 0 ? urlArr : []
   }
 
-  deleteDynamic(val) {
+  deleteDynamic (val) {
     this.props.dispatch({ type: 'DYNAMIC_SET_CURRENT_INFO', data: val })
     confirm({
       title: '确认要删除此动态吗？',
@@ -261,7 +261,7 @@ class Dynamic extends React.Component {
         })
         /*删除动态*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -363,7 +363,7 @@ class Dynamic extends React.Component {
     this.setState(data)
   }
 
-  render() {
+  render () {
     const {
       loading,
       content_val,
@@ -506,21 +506,21 @@ class Dynamic extends React.Component {
                 </Form.Item>
 
                 {Number(edit_status_val) ===
-                this.state.otherStatusList.reviewFail ? (
-                  <Form.Item {...itemLayout} label="拒绝的原因">
-                    {getFieldDecorator('rejection_reason', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '请输入拒绝的原因！',
-                          whitespace: true
-                        }
-                      ]
-                    })(<Input placeholder="动态被拒绝的原因" />)}
-                  </Form.Item>
-                ) : (
-                  ''
-                )}
+                  this.state.otherStatusList.reviewFail ? (
+                    <Form.Item {...itemLayout} label="拒绝的原因">
+                      {getFieldDecorator('rejection_reason', {
+                        rules: [
+                          {
+                            required: true,
+                            message: '请输入拒绝的原因！',
+                            whitespace: true
+                          }
+                        ]
+                      })(<Input placeholder="动态被拒绝的原因" />)}
+                    </Form.Item>
+                  ) : (
+                    ''
+                  )}
 
                 <Form.Item {...itemLayout} hasFeedback label="类型">
                   {getFieldDecorator('type', {
@@ -557,7 +557,7 @@ class Dynamic extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     更新

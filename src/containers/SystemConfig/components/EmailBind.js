@@ -27,11 +27,11 @@ class SystemConfig extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     this.system_config_info()
   }
 
-  async system_config_info() {
+  async system_config_info () {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
         this.setState({
@@ -44,7 +44,7 @@ class SystemConfig extends React.Component {
     )
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -68,7 +68,7 @@ class SystemConfig extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { is_edit } = this.state
     const { getFieldDecorator } = this.props.form
 
@@ -224,30 +224,30 @@ class SystemConfig extends React.Component {
                     修改
                   </button>
                 ) : (
-                  <div>
-                    <button
-                      className="btn btn-primary"
-                      htmlType="submit"
-                      type="primary"
-                      style={{ marginRight: '10px' }}
-                    >
-                      确定
+                    <div>
+                      <button
+                        className="btn btn-primary"
+                        htmltype="submit"
+                        type="primary"
+                        style={{ marginRight: '10px' }}
+                      >
+                        确定
                     </button>
 
-                    <button
-                      className="btn btn-light"
-                      onClick={() => {
-                        this.system_config_info()
-                        this.setState({
-                          is_edit: false
-                        })
-                      }}
-                      type="primary"
-                    >
-                      取消
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          this.system_config_info()
+                          this.setState({
+                            is_edit: false
+                          })
+                        }}
+                        type="primary"
+                      >
+                        取消
                     </button>
-                  </div>
-                )}
+                    </div>
+                  )}
               </Form.Item>
             </Form>
           </div>

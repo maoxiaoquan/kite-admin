@@ -85,8 +85,8 @@ class Picture extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -143,7 +143,7 @@ class Picture extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchPictureList()
   }
 
@@ -186,7 +186,7 @@ class Picture extends React.Component {
         })
         /*删除标签*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -338,7 +338,7 @@ class Picture extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { statePicture } = this.props
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
@@ -456,7 +456,7 @@ class Picture extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建标签' : '更新'}

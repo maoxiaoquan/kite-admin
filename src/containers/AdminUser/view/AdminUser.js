@@ -72,8 +72,8 @@ class AdminUser extends React.Component {
                     {this.currentUserRole(record).role_name}
                   </Tag>
                 ) : (
-                  <Tag color="#666">无</Tag>
-                )}
+                    <Tag color="#666">无</Tag>
+                  )}
               </div>
             )
           }
@@ -118,8 +118,8 @@ class AdminUser extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -181,11 +181,11 @@ class AdminUser extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.initAdminUserPage()
   }
 
-  async initAdminUserPage() {
+  async initAdminUserPage () {
     /*初始化获取所有列表*/
     await this.fetchAdminUserList()
     /*管理员用户列表*/
@@ -225,7 +225,7 @@ class AdminUser extends React.Component {
         })
         /*删除管理员用户*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -390,7 +390,7 @@ class AdminUser extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateAdminUser } = this.props
     const { admin_role_all = [] } = stateAdminUser
     const { loading, is_create } = this.state
@@ -562,7 +562,7 @@ class AdminUser extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {is_create ? '创建账户' : '更新'}

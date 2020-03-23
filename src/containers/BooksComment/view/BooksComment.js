@@ -68,8 +68,8 @@ class BooksComment extends React.Component {
                   {record.books.title ? record.books.title : '-'}
                 </a>
               ) : (
-                '-'
-              )}
+                  '-'
+                )}
             </div>
           )
         },
@@ -81,8 +81,8 @@ class BooksComment extends React.Component {
             return Number(record.parent_id) < 1 ? (
               <div>{record.star}星</div>
             ) : (
-              '子评论无需评星'
-            )
+                '子评论无需评星'
+              )
           }
         },
         {
@@ -142,7 +142,7 @@ class BooksComment extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchCommentList()
   }
 
@@ -171,7 +171,7 @@ class BooksComment extends React.Component {
         })
         /*删除用户评论*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -279,7 +279,7 @@ class BooksComment extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateBooksComment } = this.props
     const { loading, content_val, status_val } = this.state
     const { getFieldDecorator } = this.props.form
@@ -408,7 +408,7 @@ class BooksComment extends React.Component {
             </Form.Item>
 
             <Form.Item {...tailItemLayout}>
-              <Button className="register-btn" htmlType="submit" type="primary">
+              <Button className="register-btn" htmltype="submit" type="primary">
                 确定
               </Button>
             </Form.Item>

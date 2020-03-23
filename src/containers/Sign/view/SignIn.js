@@ -27,7 +27,7 @@ class NormalLoginForm extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { getFieldDecorator } = this.props.form
     return (
       <div id="admin-sign-in">
@@ -61,7 +61,7 @@ class NormalLoginForm extends React.Component {
               )}
             </Form.Item>
             <Form.Item>
-              <Button className="sign-in-btn" htmlType="submit" type="primary">
+              <Button className="sign-in-btn" htmltype="submit" type="primary">
                 登录
               </Button>
             </Form.Item>

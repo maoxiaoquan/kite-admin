@@ -128,7 +128,7 @@ class DynamicComment extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchCommentList()
   }
 
@@ -157,7 +157,7 @@ class DynamicComment extends React.Component {
         })
         /*删除用户评论*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -264,7 +264,7 @@ class DynamicComment extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { stateDynamicComment } = this.props
     const { loading, content_val, status_val } = this.state
     const { getFieldDecorator } = this.props.form
@@ -394,7 +394,7 @@ class DynamicComment extends React.Component {
               <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmlType="submit"
+                  htmltype="submit"
                   type="primary"
                 >
                   确定

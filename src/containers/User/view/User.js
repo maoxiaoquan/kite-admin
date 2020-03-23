@@ -118,8 +118,8 @@ class User extends React.Component {
                 {value ? (
                   <Icon type="check-circle" />
                 ) : (
-                  <Icon type="close-circle" />
-                )}
+                    <Icon type="close-circle" />
+                  )}
               </div>
             )
           }
@@ -193,12 +193,12 @@ class User extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchUserList()
     this.fetchUserRoleAll()
   }
 
-  isBan(data) {
+  isBan (data) {
     let date = new Date()
     let currDate = format(date.setHours(date.getHours()), 'YYYY-MM-DD HH:mm:ss')
     if (new Date(currDate).getTime() > new Date(data).getTime()) {
@@ -208,7 +208,7 @@ class User extends React.Component {
     }
   }
 
-  editUser(val) {
+  editUser (val) {
     this.setState({
       modal_visible_edit: true
     })
@@ -220,7 +220,7 @@ class User extends React.Component {
     })
   }
 
-  banUser(val) {
+  banUser (val) {
     let params = {
       uid: this.props.stateUser.current_user_info.uid
     }
@@ -235,7 +235,7 @@ class User extends React.Component {
     )
   }
 
-  deleteUser(val) {
+  deleteUser (val) {
     this.props.dispatch({ type: 'SET_CURRENT_USER_INFO', data: val })
     confirm({
       title: '确认要删除此用户吗？',
@@ -249,13 +249,13 @@ class User extends React.Component {
         })
         /*删除用户*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
   }
 
-  async TablePageChange(pages) {
+  async TablePageChange (pages) {
     let pagination = {}
     pagination.current = pages.current
     await this.setState({
@@ -266,7 +266,7 @@ class User extends React.Component {
     this.fetchUserList(pages)
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -275,7 +275,7 @@ class User extends React.Component {
     })
   }
 
-  fetchUserRoleAll() {
+  fetchUserRoleAll () {
     this.props.dispatch(
       getUserRoleAll('', res => {
         this.setState({
@@ -285,7 +285,7 @@ class User extends React.Component {
     )
   }
 
-  fetchUserDelete(values) {
+  fetchUserDelete (values) {
     /*删除用户*/
     this.props.dispatch(
       deleteUser(values, res => {
@@ -295,7 +295,7 @@ class User extends React.Component {
     )
   }
 
-  fetchUserList() {
+  fetchUserList () {
     /*获取用户带分页的列表*/
     const that = this
     this.setState({ loading: true })
@@ -331,7 +331,7 @@ class User extends React.Component {
     )
   }
 
-  render() {
+  render () {
     const { loading } = this.state
     const { stateUser = {} } = this.props
     const { getFieldDecorator } = this.props.form
@@ -443,7 +443,7 @@ class User extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     确定

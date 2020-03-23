@@ -82,20 +82,20 @@ class AvatarReview extends React.Component {
         render: (text, record) => {
           return record.avatar_review_status === 1 ||
             record.avatar_review_status === 3 ? (
-            <div className="operation-btn">
-              <Button
-                onClick={() => {
-                  this.editUser(record)
-                }}
-                size="small"
-                type="primary"
-              >
-                修改
+              <div className="operation-btn">
+                <Button
+                  onClick={() => {
+                    this.editUser(record)
+                  }}
+                  size="small"
+                  type="primary"
+                >
+                  修改
               </Button>
-            </div>
-          ) : (
-            ''
-          )
+              </div>
+            ) : (
+              ''
+            )
         }
       }
     ],
@@ -108,11 +108,11 @@ class AvatarReview extends React.Component {
     status_val: 1
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchAvatarReviewList()
   }
 
-  editUser(val) {
+  editUser (val) {
     this.setState({
       modal_visible_edit: true
     })
@@ -205,7 +205,7 @@ class AvatarReview extends React.Component {
     this.setState(data)
   }
 
-  render() {
+  render () {
     const { loading, status_list, status_val } = this.state
     const { stateUserAvatarReview = {} } = this.props
     const { getFieldDecorator } = this.props.form
@@ -318,7 +318,7 @@ class AvatarReview extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     更新

@@ -132,7 +132,7 @@ class AdminRole extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     /*获取后台角色分页列表*/
     this.fetchAdminRoleList()
     /*获取后台权限所有*/
@@ -197,7 +197,7 @@ class AdminRole extends React.Component {
           })
         )
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
@@ -336,7 +336,7 @@ class AdminRole extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { stateAdminRole, stateAdminAuthority } = this.props
     const { loading, role_name, role_description, is_create } = this.state
 
@@ -423,7 +423,7 @@ class AdminRole extends React.Component {
               <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmlType="submit"
+                  htmltype="submit"
                   onClick={this.handleOk}
                   type="primary"
                 >

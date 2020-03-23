@@ -41,7 +41,7 @@ class UserAuthority extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchUserAuthorityList()
   }
 
@@ -121,10 +121,10 @@ class UserAuthority extends React.Component {
       okText: 'YES',
       okType: 'danger',
       cancelText: 'No',
-      onOk() {
+      onOk () {
         that.fetchUserAuthorityDelete(data)
       },
-      onCancel() {}
+      onCancel () { }
     })
   }
 
@@ -196,7 +196,7 @@ class UserAuthority extends React.Component {
   traversalDelete = val => {
     let _arr = []
 
-    function id_arr(data) {
+    function id_arr (data) {
       for (let i in data) {
         _arr.push(data[i].authority_id)
         if (!isEmpty(data[i].children)) {
@@ -212,7 +212,7 @@ class UserAuthority extends React.Component {
     return _arr
   }
 
-  render() {
+  render () {
     const { stateUserAuthority } = this.props
     const { getFieldDecorator } = this.props.form
     const { authority_type_select, authority_parent_name } = this.state
@@ -258,12 +258,12 @@ class UserAuthority extends React.Component {
     const TreeNodeTree = data => {
       return data.length > 0
         ? data.map(item => {
-            return (
-              <TreeNode key={item.authority_id} title={customLabel(item)}>
-                {TreeNodeTree(item.children)}
-              </TreeNode>
-            )
-          })
+          return (
+            <TreeNode key={item.authority_id} title={customLabel(item)}>
+              {TreeNodeTree(item.children)}
+            </TreeNode>
+          )
+        })
         : null
     }
 
@@ -336,8 +336,8 @@ class UserAuthority extends React.Component {
                     />
                   </Form.Item>
                 ) : (
-                  ''
-                )}
+                    ''
+                  )}
 
                 <Form.Item {...itemLayout} hasFeedback label="权限名称">
                   {getFieldDecorator('authority_name', {
@@ -387,17 +387,17 @@ class UserAuthority extends React.Component {
                     )}
                   </Form.Item>
                 ) : (
-                  <Form.Item {...itemLayout} hasFeedback label="权限Key">
-                    {getFieldDecorator('authority_url', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '请输入权限Key'
-                        }
-                      ]
-                    })(<Input placeholder="请输入权限Key" type="text" />)}
-                  </Form.Item>
-                )}
+                    <Form.Item {...itemLayout} hasFeedback label="权限Key">
+                      {getFieldDecorator('authority_url', {
+                        rules: [
+                          {
+                            required: true,
+                            message: '请输入权限Key'
+                          }
+                        ]
+                      })(<Input placeholder="请输入权限Key" type="text" />)}
+                    </Form.Item>
+                  )}
 
                 <Form.Item {...itemLayout} label="排序">
                   {getFieldDecorator('authority_sort')(<InputNumber />)}
@@ -420,12 +420,12 @@ class UserAuthority extends React.Component {
                     )}
                   </Form.Item>
                 ) : (
-                  ''
-                )}
+                    ''
+                  )}
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="login-form-button"
-                    htmlType="submit"
+                    htmltype="submit"
                     type="primary"
                   >
                     {this.state.is_create ? '提交' : '修改'}

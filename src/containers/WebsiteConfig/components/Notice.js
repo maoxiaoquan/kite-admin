@@ -93,8 +93,8 @@ class _Notice extends React.Component {
               {JSON.parse(record.option_value).enable ? (
                 <Icon type="check-circle" />
               ) : (
-                <Icon type="close-circle" />
-              )}
+                  <Icon type="close-circle" />
+                )}
             </div>
           )
         }
@@ -135,7 +135,7 @@ class _Notice extends React.Component {
     option_id: ''
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this._getOptionsList()
   }
   _getOptionsList = () => {
@@ -220,13 +220,13 @@ class _Notice extends React.Component {
         )
         /*删除此条公告吗*/
       },
-      onCancel() {
+      onCancel () {
         console.log('Cancel')
       }
     })
   }
 
-  render() {
+  render () {
     const { stateWebsiteConfig } = this.props
     const { loading, is_create } = this.state
     const { getFieldDecorator } = this.props.form
@@ -316,7 +316,7 @@ class _Notice extends React.Component {
               <Form.Item {...tailItemLayout}>
                 <Button
                   className="register-btn"
-                  htmlType="submit"
+                  htmltype="submit"
                   type="primary"
                 >
                   {is_create ? '更新' : '创建公告'}
