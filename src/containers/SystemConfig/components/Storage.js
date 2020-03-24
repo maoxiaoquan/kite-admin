@@ -37,11 +37,11 @@ class Oauth extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     this.systemConfigInfo()
   }
 
-  async systemConfigInfo() {
+  async systemConfigInfo () {
     await this.props.dispatch(
       getSystemConfigInfo({}, result => {
         const storage = result.storage || {}
@@ -55,7 +55,7 @@ class Oauth extends React.Component {
     )
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
@@ -79,7 +79,7 @@ class Oauth extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const { is_edit, serviceProvider } = this.state
     const { getFieldDecorator } = this.props.form
 
@@ -121,7 +121,7 @@ class Oauth extends React.Component {
                   rules: [
                     {
                       required: true,
-                      message: '选择主题！',
+                      message: '选择第三方存储服务商！',
                       whitespace: true
                     }
                   ]
@@ -134,8 +134,8 @@ class Oauth extends React.Component {
                       })
                     }}
                   >
-                    <Option value="default">默认</Option>
-                    <Option value="qiniu">qiniu</Option>
+                    <Option value="default">默认存储本地</Option>
+                    <Option value="qiniu">七牛</Option>
                     <Option value="aliyun">阿里云</Option>
                     <Option value="tengxun">腾讯</Option>
                   </Select>
@@ -162,42 +162,72 @@ class Oauth extends React.Component {
                 })(<Input disabled={!is_edit} />)}
               </Form.Item>
 
+              <Form.Item {...itemLayout} label="accessKey">
+                {getFieldDecorator('accessKey', {
+                  rules: [
+                    {
+                      message: 'Please input accessKey!'
+                    }
+                  ]
+                })(<Input disabled={!is_edit} />)}
+              </Form.Item>
+
+              <Form.Item {...itemLayout} label="secretKey">
+                {getFieldDecorator('secretKey', {
+                  rules: [
+                    {
+                      message: 'Please input secretKey!'
+                    }
+                  ]
+                })(<Input disabled={!is_edit} />)}
+              </Form.Item>
+
               <div
                 className="qiniu"
                 style={{
                   display: serviceProvider === 'qiniu' ? 'block' : 'none'
                 }}
               >
-                <div className="title">七牛</div>
 
-                <Form.Item {...itemLayout} label="accessKey">
-                  {getFieldDecorator('accessKey', {
+                <Form.Item {...itemLayout} label="机房">
+                  {getFieldDecorator('zone', {
                     rules: [
                       {
-                        message: 'Please input accessKey!'
+                        message: '选择zone！',
+                        whitespace: true
                       }
                     ]
-                  })(<Input disabled={!is_edit} />)}
+                  })(
+                    <Select
+                      disabled={!is_edit}
+                    >
+                      <Option value="Zone_z0">华东</Option>
+                      <Option value="Zone_z1">华北</Option>
+                      <Option value="Zone_z2">华南</Option>
+                      <Option value="Zone_na0">北美</Option>
+                    </Select>
+                  )}
                 </Form.Item>
 
-                <Form.Item {...itemLayout} label="secretKey">
-                  {getFieldDecorator('secretKey', {
-                    rules: [
-                      {
-                        message: 'Please input secretKey!'
-                      }
-                    ]
-                  })(<Input disabled={!is_edit} />)}
-                </Form.Item>
               </div>
 
               <div
                 className="aliyun"
                 style={{
-                  display: serviceProvider === 'aliyun' ? 'block' : 'none'
+                  display: serviceProvider === 'aliyun' || serviceProvider === 'tengxun' ? 'block' : 'none'
                 }}
               >
-                <div className="title">阿里云</div>
+
+                <Form.Item {...itemLayout} label="region(bucket所在的区域)">
+                  {getFieldDecorator('region', {
+                    rules: [
+                      {
+                        message: 'Please input region!'
+                      }
+                    ]
+                  })(<Input disabled={!is_edit} />)}
+                </Form.Item>
+
               </div>
 
               <Form.Item {...tailItemLayout}>
@@ -214,30 +244,30 @@ class Oauth extends React.Component {
                     修改
                   </button>
                 ) : (
-                  <div>
-                    <button
-                      className="btn btn-primary"
-                      htmltype="submit"
-                      type="primary"
-                      style={{ marginRight: '10px' }}
-                    >
-                      确定
+                    <div>
+                      <button
+                        className="btn btn-primary"
+                        htmltype="submit"
+                        type="primary"
+                        style={{ marginRight: '10px' }}
+                      >
+                        确定
                     </button>
 
-                    <button
-                      className="btn btn-light"
-                      onClick={() => {
-                        this.systemConfigInfo()
-                        this.setState({
-                          is_edit: false
-                        })
-                      }}
-                      type="primary"
-                    >
-                      取消
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          this.systemConfigInfo()
+                          this.setState({
+                            is_edit: false
+                          })
+                        }}
+                        type="primary"
+                      >
+                        取消
                     </button>
-                  </div>
-                )}
+                    </div>
+                  )}
               </Form.Item>
             </Form>
           </div>
