@@ -396,7 +396,7 @@ class ArticleComment extends React.Component {
             </Form.Item>
 
             <Form.Item {...tailItemLayout}>
-              <Button className="register-btn" htmltype="submit" type="primary">
+              <Button className="register-btn" htmlType="submit" type="primary">
                 确定
               </Button>
             </Form.Item>

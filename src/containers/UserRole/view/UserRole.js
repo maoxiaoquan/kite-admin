@@ -564,7 +564,7 @@ class UserRole extends React.Component {
                 <Form.Item {...tailItemLayout}>
                   <Button
                     className="register-btn"
-                    htmltype="submit"
+                    htmlType="submit"
                     type="primary"
                   >
                     {is_create ? '创建角色' : '更新'}
