@@ -230,6 +230,27 @@ class Oauth extends React.Component {
 
               </div>
 
+              <div
+                className="aliyun"
+                style={{
+                  display: serviceProvider === 'aliyun' ? 'block' : 'none'
+                }}
+              >
+
+                <Form.Item {...itemLayout} label="endPoint">
+                  {getFieldDecorator('endPoint', {
+                    rules: [
+                      {
+                        message: 'Please input endPoint!'
+                      }
+                    ]
+                  })(<Input disabled={!is_edit} />)}
+                </Form.Item>
+
+              </div>
+
+
+
               <Form.Item {...tailItemLayout}>
                 {!is_edit ? (
                   <button
